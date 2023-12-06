@@ -1,7 +1,7 @@
 # Exercícios
 
 1 - Crie um dropdown (<select>) com quatro opções: “Abacate”, "Maçã", "Pera" e "Laranja". Ao selecionar uma opção, exiba a fruta escolhida na página.
-
+---
 2 - Utilize um filtro para exibir apenas os números pares de um array de números de 1 a 20.
 
 3) Crie um array de objetos representando livros, cada objeto deve ter propriedades como titulo, autor e ano. Exiba esses livros em uma lista na página.
