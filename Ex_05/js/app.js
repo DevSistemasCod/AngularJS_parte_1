@@ -1,13 +1,35 @@
 let app = angular.module('minhaAplicacao', []);
 
-app.controller('meuController', function($scope) {
-  $scope.disciplinas = ["BD", "IDM", "PWFE", "PWBE"];
-  $scope.mensagem = 'A Disciplina Selecionada foi: ';
+app.controller('filmesController', function ($scope) {
+  $scope.filmes = [];
+  $scope.novoFilme = {};
+  $scope.filmesFiltrados = [];
 
-  $scope.$watch('selecionarDisciplina', function(disciplinaSelecionada, disciplinaAnterior) {
-    if (disciplinaSelecionada !== disciplinaAnterior) {
-      $scope.informacoesExibidas = true;
-      $scope.disciplinaSelecionada = disciplinaSelecionada;
-    }
-  });
+  // Função para cadastrar um novo filme
+  $scope.cadastrarFilme = function () {
+    $scope.filmes.push({
+      titulo: $scope.novoFilme.titulo,
+      ano: $scope.novoFilme.ano,
+      classificacao: $scope.novoFilme.classificacao
+    });
+
+    // Limpar o objeto de novo filme
+    $scope.novoFilme = {};
+  };
+
+  // Função para aplicar a classificação
+  $scope.aplicarClassificacao = function () {
+    $scope.filmesFiltrados = $scope.filmes.filter(function (filme) {
+      if (filme.classificacao > 16) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    // Ordenar os filmes por ano de lançamento
+    $scope.filmesFiltrados.sort(function (filme_1, filme_2) {
+      return filme_1.ano - filme_2.ano;
+    });
+  };
 });
